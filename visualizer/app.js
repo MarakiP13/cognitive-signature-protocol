@@ -45,6 +45,42 @@ function handleLLMInput(rawText, filename) {
     handleLLMLog(rawText);
   }
 }
+function extractChatGPTText(data) {
+  let output = [];
+
+  // Case 1. messages[]
+  if (Array.isArray(data.messages)) {
+    data.messages.forEach(msg => {
+      if (msg.role && msg.content) {
+        output.push(`${msg.role.toUpperCase()}: ${msg.content}`);
+      }
+    });
+    return output.join("\n\n");
+  }
+
+  // Case 2. conversations[].mapping (ChatGPT export)
+  if (Array.isArray(data.conversations)) {
+    data.conversations.forEach(conv => {
+      const mapping = conv.mapping || {};
+      Object.values(mapping).forEach(node => {
+        const message = node.message;
+        if (
+          message &&
+          message.author &&
+          message.content &&
+          Array.isArray(message.content.parts)
+        ) {
+          const role = message.author.role || "unknown";
+          const text = message.content.parts.join(" ");
+          output.push(`${role.toUpperCase()}: ${text}`);
+        }
+      });
+    });
+    return output.join("\n\n");
+  }
+
+  throw new Error("Unsupported ChatGPT JSON format");
+}
 
 drawCore();
 drawBranches();
