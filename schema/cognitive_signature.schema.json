@@ -1,0 +1,178 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yourusername.github.io/yourrepo/schema/cognitive_signature.schema.json",
+  "title": "Cognitive Signature Schema",
+  "version": "0.1.0",
+  "description": "A schema for representing a Cognitive Signature derived from human–LLM interaction logs. Focuses on structural thinking patterns, not psychological traits.",
+  "type": "object",
+  "required": [
+    "cognitive_signature_version",
+    "core_axes",
+    "derived_visual_metaphor",
+    "confidence"
+  ],
+  "properties": {
+    "cognitive_signature_version": {
+      "type": "string",
+      "description": "Version of the Cognitive Signature protocol used to generate this file"
+    },
+
+    "subject_id": {
+      "type": "string",
+      "description": "Optional identifier or hash for the subject"
+    },
+
+    "time_window": {
+      "type": "object",
+      "description": "Optional time range covered by the interaction log",
+      "properties": {
+        "start": { "type": "string", "format": "date-time" },
+        "end": { "type": "string", "format": "date-time" }
+      },
+      "additionalProperties": false
+    },
+
+    "core_axes": {
+      "type": "object",
+      "required": [
+        "cognitive_compression",
+        "conceptual_breadth",
+        "reasoning_topology",
+        "adaptation_style"
+      ],
+      "properties": {
+        "cognitive_compression": {
+          "type": "object",
+          "required": ["level"],
+          "properties": {
+            "level": {
+              "type": "string",
+              "enum": ["low", "medium", "high"]
+            },
+            "signals": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          },
+          "additionalProperties": false
+        },
+
+        "conceptual_breadth": {
+          "type": "object",
+          "required": ["level"],
+          "properties": {
+            "level": {
+              "type": "string",
+              "enum": ["narrow", "moderate", "expansive"]
+            },
+            "domains_detected": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          },
+          "additionalProperties": false
+        },
+
+        "reasoning_topology": {
+          "type": "object",
+          "required": ["primary_mode"],
+          "properties": {
+            "primary_mode": {
+              "type": "string",
+              "enum": ["linear", "branching", "recursive", "hybrid"]
+            },
+            "evidence": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          },
+          "additionalProperties": false
+        },
+
+        "adaptation_style": {
+          "type": "object",
+          "required": ["feedback_response"],
+          "properties": {
+            "feedback_response": {
+              "type": "string",
+              "enum": ["resistant", "selective", "highly_adaptive"]
+            },
+            "self_correction_markers": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          },
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "stability_markers": {
+      "type": "object",
+      "properties": {
+        "recurring_metaphors": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "persistent_constraints": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "mode_transitions": {
+      "type": "array",
+      "description": "Observed shifts between cognitive modes",
+      "items": {
+        "type": "object",
+        "required": ["from", "to"],
+        "properties": {
+          "from": { "type": "string" },
+          "to": { "type": "string" },
+          "trigger": { "type": "string" }
+        },
+        "additionalProperties": false
+      }
+    },
+
+    "derived_visual_metaphor": {
+      "type": "object",
+      "required": ["primary_shape", "density_pattern", "motion"],
+      "properties": {
+        "primary_shape": {
+          "type": "string",
+          "description": "Abstract form representing the thinking topology"
+        },
+        "density_pattern": {
+          "type": "string",
+          "description": "How conceptual density is distributed"
+        },
+        "motion": {
+          "type": "string",
+          "description": "Implied dynamic behavior over time"
+        }
+      },
+      "additionalProperties": false
+    },
+
+    "confidence": {
+      "type": "object",
+      "required": ["signal_strength"],
+      "properties": {
+        "signal_strength": {
+          "type": "string",
+          "enum": ["low", "medium", "high"]
+        },
+        "notes": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+
+  "additionalProperties": false
+}
