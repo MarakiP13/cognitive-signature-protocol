@@ -10,3 +10,17 @@ html, body {
 canvas {
   display: block;
 }
+#dropzone {
+  border: 2px dashed rgba(255,255,255,0.3);
+  margin: 24px;
+  padding: 24px;
+  text-align: center;
+  color: #cfcfe8;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+#dropzone.dragover {
+  border-color: #9aa4ff;
+  background: rgba(154,164,255,0.05);
+}
