@@ -32,15 +32,18 @@ function drawBranches() {
     ctx.stroke();
   }
 }
-function handleLLMLog(rawText) {
-  console.log("LLM log loaded locally");
-
-  // 1. Extract signals (later)
-  // 2. Build cognitive signature object
-  // 3. Generate visual metaphor + summary
-
-  // For now, confirm flow:
-  alert("LLM log loaded. Ready for analysis.");
+function handleLLMInput(rawText, filename) {
+  if (filename.endsWith(".json")) {
+    try {
+      const data = JSON.parse(rawText);
+      const extractedText = extractChatGPTText(data);
+      handleLLMLog(extractedText);
+    } catch (e) {
+      alert("Invalid JSON file. Could not parse.");
+    }
+  } else {
+    handleLLMLog(rawText);
+  }
 }
 
 drawCore();
