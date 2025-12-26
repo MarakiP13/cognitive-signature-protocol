@@ -24,7 +24,7 @@ dropzone.addEventListener("drop", e => {
   const reader = new FileReader();
   reader.onload = () => {
     const text = reader.result;
-    handleLLMLog(text);
+    handleLLMInput(text, file.name);
   };
   reader.readAsText(file);
 });
