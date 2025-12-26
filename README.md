@@ -23,6 +23,115 @@ This is not personality typing.
 
 It is a way to preserve and reason about how thinking unfolds.
 
+Quick Start
+
+You can use the Cognitive Signature Protocol in three minutes, with or without code.
+
+Option A. Prompt-Only (No Setup)
+
+Use this if you only have an LLM and a conversation log.
+
+Collect a short LLM interaction log
+
+5–20 turns is enough
+
+Raw text is sufficient
+
+Paste the log into your LLM along with this prompt:
+
+You are a cognitive cartographer.
+
+Input: the following human–LLM interaction log.
+
+Task:
+1. Infer how the human thinks, not what they believe.
+2. Extract stable reasoning patterns, not surface tone.
+3. Identify:
+   - cognitive compression style
+   - conceptual breadth
+   - reasoning topology
+   - adaptation behavior
+
+Produce two outputs:
+
+Output A. Visualisation Prompt
+Describe an abstract cognitive landscape using:
+- shape
+- density
+- motion
+- stability anchors
+Avoid personality labels. Use topological metaphors.
+
+Output B. Cognitive Summary
+Explain in plain language:
+- how this person explores
+- how they decide
+- what remains stable
+- where they adapt
+
+Constraints:
+- No psychological diagnosis
+- No personality typing
+- No value judgement
+Focus on structure and process only.
+
+
+You now have:
+
+a visualisation prompt
+
+a cognitive summary
+
+No schema required.
+
+Option B. Structured (JSON-Based)
+
+Use this if you want something machine-readable.
+
+Take the same interaction log
+
+Populate schema/cognitive_signature.schema.json
+
+Save as my_signature.json
+
+You can now:
+
+compare signatures
+
+visualise patterns
+
+version changes over time
+
+Option C. Visualise Locally
+
+Open visualizer/index.html in your browser
+
+Load or paste a Cognitive Signature JSON
+
+View the cognitive map rendered on canvas
+
+No backend. No build step. Client-side only.
+
+Minimal Input Requirements
+
+Plain text interaction logs
+
+No embeddings
+
+No model-specific metadata
+
+The protocol is model-agnostic by design.
+
+Typical First Use Cases
+
+Reflect on how you think while working with AI
+
+Compare early vs later sessions on the same project
+
+Explore how different collaborators approach the same task
+
+Build adaptive interfaces that respond to thinking style
+
 Why this exists
 
 Most systems collapse interaction logs into embeddings and lose structure.
