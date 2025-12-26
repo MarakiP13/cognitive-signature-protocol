@@ -16,10 +16,20 @@ dropzone.addEventListener("drop", e => {
   const file = e.dataTransfer.files[0];
   if (!file) return;
 
-  if (!file.type.includes("text") && !file.name.endsWith(".md")) {
-    alert("Please upload a text-based LLM export.");
-    return;
-  }
+const name = file.name.toLowerCase();
+
+const isAllowed =
+  name.endsWith(".txt") ||
+  name.endsWith(".md") ||
+  name.endsWith(".json") ||
+  file.type.startsWith("text/") ||
+  file.type === "application/json";
+
+if (!isAllowed) {
+  alert("Please upload a .txt, .md, or .json LLM export.");
+  return;
+}
+
 
   const reader = new FileReader();
   reader.onload = () => {
