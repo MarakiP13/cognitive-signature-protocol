@@ -16,6 +16,11 @@ dropzone.addEventListener("drop", e => {
   const file = e.dataTransfer.files[0];
   if (!file) return;
 
+  if (!file.type.includes("text") && !file.name.endsWith(".md")) {
+    alert("Please upload a text-based LLM export.");
+    return;
+  }
+
   const reader = new FileReader();
   reader.onload = () => {
     const text = reader.result;
