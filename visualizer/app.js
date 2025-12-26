@@ -32,6 +32,16 @@ function drawBranches() {
     ctx.stroke();
   }
 }
+function handleLLMLog(rawText) {
+  console.log("LLM log loaded locally");
+
+  // 1. Extract signals (later)
+  // 2. Build cognitive signature object
+  // 3. Generate visual metaphor + summary
+
+  // For now, confirm flow:
+  alert("LLM log loaded. Ready for analysis.");
+}
 
 drawCore();
 drawBranches();
